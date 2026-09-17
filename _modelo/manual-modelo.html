@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nome do Manual — Nome do Sistema | Manuais</title>
+<meta name="description" content="Descrição curta do que o manual cobre.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html">← Todos os manuais</a>
+    <button class="theme-btn" type="button">Tema escuro</button>
+  </div>
+
+  <header class="doc">
+    <span class="tag">Manual do Usuário</span>
+    <h1>Nome do Manual — Nome do Sistema</h1>
+    <p class="sub">Uma frase dizendo o que a pessoa vai conseguir fazer depois de ler.</p>
+  </header>
+
+  <nav class="toc">
+    <strong>Conteúdo</strong>
+    <ol>
+      <li><a href="#o-que-e">O que é</a></li>
+      <li><a href="#conceitos">Conceitos</a></li>
+      <li><a href="#etapas">Passo a passo</a></li>
+      <li><a href="#duvidas">Dúvidas frequentes</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="o-que-e">1. O que é</h2>
+  <p>Contexto: para que serve o processo e quem participa.</p>
+
+  <h2 id="conceitos">2. Conceitos</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Termo</strong> — explicação curta.</li>
+    </ul>
+  </div>
+
+  <h2 id="etapas">3. Passo a passo</h2>
+
+  <div class="step">
+    <h3><span class="num">1</span> Nome da etapa <span class="who">Setor responsável</span></h3>
+    <p>O que acontece nessa etapa.</p>
+    <ul>
+      <li>Ação a executar.</li>
+    </ul>
+    <div class="note"><strong>Observação</strong> Texto de apoio.</div>
+    <!-- variações: <div class="alert"> para atenção, <div class="tip"> para boa prática -->
+  </div>
+
+  <!-- Print de tela:
+  <figure class="fig">
+    <img src="../assets/img/nome-da-imagem.png" alt="Descrição da tela">
+    <figcaption>Legenda da imagem.</figcaption>
+  </figure>
+  -->
+
+  <h2>4. Resumo</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>#</th><th>Etapa</th><th>Responsável</th><th>O que faz</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="duvidas">5. Dúvidas frequentes</h2>
+  <div class="card">
+    <h3>Pergunta?</h3>
+    <p>Resposta curta e direta.</p>
+  </div>
+
+  <footer>
+    Documentação interna. Revise os nomes de botões e menus conforme a versão instalada.
+  </footer>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
