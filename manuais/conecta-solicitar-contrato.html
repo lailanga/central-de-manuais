@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solicitar Contrato — Conecta (Betha) | Manuais</title>
+<meta name="description" content="Manual do usuario do fluxo BPM Solicitar Contrato no sistema Conecta da Betha.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html">← Todos os manuais</a>
+    <button class="theme-btn" type="button">Tema escuro</button>
+  </div>
+
+
+<header class="doc">
+  <span class="tag">Manual do Usuário</span>
+  <h1>Solicitar Contrato — Fluxo BPM no Conecta (Betha)</h1>
+  <p class="sub">Como abrir, dar andamento e concluir a solicitação de contrato, etapa por etapa.</p>
+</header>
+
+<nav class="toc">
+  <strong>Conteúdo</strong>
+  <ol>
+    <li><a href="#o-que-e">O que é esse fluxo</a></li>
+    <li><a href="#conceitos">Conceitos que você precisa saber</a></li>
+    <li><a href="#visao">Visão geral do fluxo</a></li>
+    <li><a href="#basico">Como assumir e concluir uma tarefa</a></li>
+    <li><a href="#etapas">Passo a passo das etapas</a></li>
+    <li><a href="#acompanhar">Como acompanhar a solicitação</a></li>
+    <li><a href="#resumo">Resumo: quem faz o quê</a></li>
+    <li><a href="#duvidas">Dúvidas frequentes</a></li>
+  </ol>
+</nav>
+
+<h2 id="o-que-e">1. O que é esse fluxo</h2>
+<p><strong>Solicitar Contrato</strong> é um fluxo desenhado no <strong>BPM da Betha</strong> e executado pelos usuários dentro do <strong>Conecta</strong>. Ele organiza todo o caminho de um contrato: do pedido feito pelo setor de licitação até a assinatura e o anexo dos documentos finais.</p>
+<p>O fluxo garante que ninguém pule etapa: cada setor só recebe a tarefa quando o setor anterior concluir a dele.</p>
+
+<h2 id="conceitos">2. Conceitos que você precisa saber</h2>
+<div class="card">
+  <ul>
+    <li><strong>Solicitação</strong> — é o processo aberto. Recebe um título (ex.: <code>Contrato laiane langa 235</code>).</li>
+    <li><strong>Etapa</strong> — cada caixa do fluxo (Departamento de Contratos, Análise Jurídica, Assinar Contrato...).</li>
+    <li><strong>Tarefa pendente</strong> — o trabalho que cai na sua caixa quando a etapa anterior é concluída. Enquanto ela existir, o fluxo está parado ali.</li>
+    <li><strong>Grupo responsável</strong> — o setor que recebe a tarefa (ex.: Departamento de Contratos). A tarefa chega para o grupo inteiro, não para uma pessoa específica.</li>
+    <li><strong>Responsável</strong> — o usuário que <em>assumiu</em> a tarefa. Sem alguém assumir, ninguém consegue dar andamento.</li>
+    <li><strong>Andamento / conclusão</strong> — ao concluir uma etapa, o sistema automaticamente cria a tarefa pendente do próximo setor.</li>
+    <li><strong>Desvio (losango com X)</strong> — ponto de decisão. Dependendo da resposta (aprovado / reprovado), o fluxo segue por um caminho ou volta para correção.</li>
+  </ul>
+</div>
+
+<h2 id="visao">3. Visão geral do fluxo</h2>
+<figure class="fig">
+<svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do fluxo Solicitar Contrato">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g stroke="currentColor" fill="none" stroke-width="1.4" marker-end="url(#ar)" color="var(--text-2)">
+    <path d="M52,150 H80"/>
+    <path d="M186,150 H214"/>
+    <path d="M320,150 H346"/>
+    <path d="M378,132 V70 H293 V124"/>
+    <path d="M226,70 H160 V124"/>
+    <path d="M394,150 H430"/>
+    <path d="M536,150 H562"/>
+    <path d="M594,168 V250 H676 V206"/>
+    <path d="M610,250 H484 V176"/>
+    <path d="M610,150 H646"/>
+    <path d="M752,150 H780"/>
+  </g>
+
+  <circle cx="36" cy="150" r="15" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+  <text x="36" y="188" text-anchor="middle" font-size="11" fill="var(--text-2)">Início</text>
+  <text x="36" y="202" text-anchor="middle" font-size="11" fill="var(--text-2)">(Licitação)</text>
+
+  <g font-size="11.5" fill="var(--text)" text-anchor="middle">
+    <rect x="82" y="124" width="104" height="52" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+    <text x="134" y="145">Departamento</text><text x="134" y="160">de Contratos</text>
+
+    <rect x="216" y="124" width="104" height="52" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+    <text x="268" y="145">Análise Dep.</text><text x="268" y="160">Jurídico</text>
+
+    <rect x="216" y="18" width="104" height="52" rx="8" fill="var(--warn-soft)" stroke="var(--line)"/>
+    <text x="268" y="39">Correção Dep.</text><text x="268" y="54">de Contrato</text>
+
+    <rect x="432" y="124" width="104" height="52" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+    <text x="484" y="145">Conferir</text><text x="484" y="160">Contrato</text>
+
+    <rect x="610" y="224" width="104" height="52" rx="8" fill="var(--warn-soft)" stroke="var(--line)"/>
+    <text x="662" y="245">Corrigir</text><text x="662" y="260">Contrato</text>
+
+    <rect x="648" y="124" width="104" height="52" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+    <text x="700" y="145">Assinar</text><text x="700" y="160">Contrato</text>
+
+    <rect x="782" y="124" width="92" height="52" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
+    <text x="828" y="145">Contratos</text><text x="828" y="160">Anexos</text>
+  </g>
+
+  <g fill="var(--surface)" stroke="var(--text-2)" stroke-width="1.4">
+    <rect x="362" y="134" width="32" height="32" transform="rotate(45 378 150)"/>
+    <rect x="578" y="134" width="32" height="32" transform="rotate(45 594 150)"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle">
+    <text x="378" y="155">×</text><text x="594" y="155">×</text>
+  </g>
+
+  <g font-size="10.5" fill="var(--text-2)">
+    <text x="330" y="62">reprovado</text>
+    <text x="400" y="142">aprovado</text>
+    <text x="546" y="245">reprova</text>
+    <text x="616" y="142">aprova</text>
+  </g>
+</svg>
+<figcaption>Caminho feliz da esquerda para a direita; as caixas em destaque são os retornos para correção.</figcaption>
+</figure>
+
+<h2 id="basico">4. Como assumir e concluir uma tarefa</h2>
+<p>Esse roteiro vale para <strong>todas</strong> as etapas do fluxo. É sempre o mesmo ritmo.</p>
+<div class="card">
+<ol>
+  <li>Acesse o <strong>Conecta</strong> e abra a lista de <strong>tarefas pendentes</strong> do seu setor.</li>
+  <li>Localize a solicitação pelo título (ex.: <code>Contrato laiane langa 235</code>).</li>
+  <li>Clique em <strong>Tornar-se responsável</strong> (ou "Assumir tarefa"). Enquanto ninguém assumir, a tarefa fica só no grupo e não avança.</li>
+  <li>Leia o que veio das etapas anteriores e abra os documentos anexados.</li>
+  <li>Faça o que a etapa exige (analisar, corrigir, anexar, assinar).</li>
+  <li>Anexe os arquivos gerados, se houver.</li>
+  <li>Clique em <strong>Concluir</strong> e, quando a etapa pedir, escolha a decisão (<em>aprovado</em> / <em>reprovado</em>).</li>
+</ol>
+</div>
+<div class="note">
+  <strong>Regra de ouro</strong>
+  Ao concluir uma etapa, o sistema cria sozinho a tarefa pendente do próximo setor. Você não precisa avisar ninguém manualmente — mas o fluxo também não anda sozinho se você esquecer de concluir.
+</div>
+
+<h2 id="etapas">5. Passo a passo das etapas</h2>
+
+<div class="step">
+  <h3><span class="num">1</span> Abertura da solicitação <span class="who">Setor de Licitação</span></h3>
+  <p>O setor de licitação inicia a tarefa <strong>Solicitar Contrato</strong> e anexa os arquivos necessários para a elaboração do contrato.</p>
+  <ul>
+    <li>Preencha o título da solicitação de forma que dê pra identificar depois.</li>
+    <li>Anexe toda a documentação de origem antes de enviar.</li>
+    <li>Ao enviar, a tarefa pendente cai automaticamente no <strong>Departamento de Contratos</strong>.</li>
+  </ul>
+  <div class="alert"><strong>Atenção</strong> Documento faltando aqui vira retrabalho lá na frente. Confira antes de enviar.</div>
+</div>
+
+<div class="step">
+  <h3><span class="num">2</span> Departamento de Contratos <span class="who">Grupo: Dep. de Contratos</span></h3>
+  <p>Primeira triagem. Um usuário do grupo precisa se tornar responsável pela tarefa.</p>
+  <ul>
+    <li>Confira se a documentação enviada pela licitação está completa e legível.</li>
+    <li>Complemente as informações necessárias para o jurídico trabalhar.</li>
+    <li>Conclua a etapa — a tarefa segue para a <strong>Análise do Departamento Jurídico</strong>.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">3</span> Análise Departamento Jurídico <span class="who">Grupo: Jurídico</span></h3>
+  <p>O jurídico analisa o pedido e decide o rumo no primeiro desvio do fluxo.</p>
+  <ul>
+    <li><strong>Aprovado</strong> → o jurídico elabora o contrato e o fluxo segue para <em>Conferir Contrato</em>.</li>
+    <li><strong>Reprovado</strong> → a tarefa volta para o Departamento de Contratos na etapa <em>Correção Departamento de Contrato</em>.</li>
+  </ul>
+  <div class="tip"><strong>Boa prática</strong> Ao reprovar, escreva no andamento exatamente o que precisa ser corrigido. É o que o outro setor vai ler.</div>
+</div>
+
+<div class="step">
+  <h3><span class="num">4</span> Correção Departamento de Contrato <span class="who">Grupo: Dep. de Contratos</span></h3>
+  <p>Etapa de retorno. Só acontece quando o jurídico reprova.</p>
+  <ul>
+    <li>Leia o motivo da reprovação registrado pelo jurídico.</li>
+    <li>Ajuste ou anexe o que foi solicitado.</li>
+    <li>Conclua — a tarefa <strong>volta para a Análise do Jurídico</strong>. Esse vai e volta se repete até aprovar.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">5</span> Conferir Contrato <span class="who">Grupo: Dep. de Contratos</span></h3>
+  <p>O contrato já foi elaborado pelo jurídico. Agora o setor de contratos confere e decide no segundo desvio.</p>
+  <ul>
+    <li><strong>Aprova</strong> → retorna ao jurídico para <em>Assinar Contrato</em>.</li>
+    <li><strong>Reprova</strong> → volta ao jurídico na etapa <em>Corrigir Contrato</em>.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">6</span> Corrigir Contrato <span class="who">Grupo: Jurídico</span></h3>
+  <p>Etapa de retorno. Só acontece quando a conferência reprova.</p>
+  <ul>
+    <li>Ajuste a minuta conforme o apontamento.</li>
+    <li>Anexe a versão corrigida.</li>
+    <li>Conclua — a tarefa <strong>volta para Conferir Contrato</strong>.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">7</span> Assinar Contrato <span class="who">Grupo: Jurídico</span></h3>
+  <ul>
+    <li>Colha as assinaturas do contrato aprovado.</li>
+    <li>Anexe a via assinada na tarefa.</li>
+    <li>Conclua — segue para <em>Contratos Anexos</em>.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">8</span> Contratos Anexos <span class="who">Grupo: Dep. de Contratos</span></h3>
+  <p>Última etapa. O setor de contratos anexa os demais documentos e finaliza a tarefa.</p>
+  <ul>
+    <li>Anexe publicações, termos e documentos complementares.</li>
+    <li>Conclua — a solicitação passa para o status <strong>Concluída</strong> e o fluxo chega ao Fim.</li>
+  </ul>
+  <div class="alert"><strong>Sem volta</strong> Depois de finalizada, a solicitação não aceita novos andamentos. Se faltar documento, será preciso abrir outra solicitação.</div>
+</div>
+
+<h2 id="acompanhar">6. Como acompanhar a solicitação</h2>
+<p>Abra a solicitação no Conecta. No topo aparecem o título, o nome do fluxo e o status atual (ex.: <strong>Concluída</strong>).</p>
+<div class="card">
+<ul>
+  <li><strong>Aba Atualizações</strong> — histórico de todas as etapas, da mais recente para a mais antiga, com status, prazo, grupo responsável, responsável, data de início e data de conclusão.</li>
+  <li><strong>Aba Detalhes</strong> — dados preenchidos na abertura da solicitação.</li>
+  <li><strong>Ver fluxo</strong> — mostra o desenho do BPM e em que ponto a solicitação está.</li>
+  <li><strong>Exportar documentos</strong> — baixa os arquivos anexados ao longo do processo.</li>
+  <li><strong>Atualizar</strong> — recarrega a lista de etapas sem sair da tela.</li>
+  <li><strong>Ícone de documento</strong> ao lado da etapa — abre os anexos daquela etapa específica.</li>
+</ul>
+</div>
+<div class="note">
+  <strong>Lendo o histórico</strong>
+  Etapas repetidas na lista (ex.: <em>Conferir Contrato</em> aparecendo duas vezes) indicam que houve retorno para correção. É normal e ajuda a entender onde o processo travou.
+</div>
+
+<h2 id="resumo">7. Resumo: quem faz o quê</h2>
+<div class="scroll">
+<table>
+  <thead>
+    <tr><th>#</th><th>Etapa</th><th>Grupo responsável</th><th>O que faz</th><th>Para onde vai</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Solicitar Contrato</td><td>Licitação</td><td>Abre a solicitação e anexa os arquivos</td><td>Departamento de Contratos</td></tr>
+    <tr><td>2</td><td>Departamento de Contratos</td><td>Dep. de Contratos</td><td>Confere e complementa a documentação</td><td>Análise Jurídica</td></tr>
+    <tr><td>3</td><td>Análise Dep. Jurídico</td><td>Jurídico</td><td>Analisa; se aprovar, elabora o contrato</td><td>Aprovado → Conferir / Reprovado → Correção</td></tr>
+    <tr><td>4</td><td>Correção Dep. de Contrato</td><td>Dep. de Contratos</td><td>Corrige o que foi apontado</td><td>Volta à Análise Jurídica</td></tr>
+    <tr><td>5</td><td>Conferir Contrato</td><td>Dep. de Contratos</td><td>Confere a minuta elaborada</td><td>Aprova → Assinar / Reprova → Corrigir</td></tr>
+    <tr><td>6</td><td>Corrigir Contrato</td><td>Jurídico</td><td>Ajusta a minuta</td><td>Volta a Conferir Contrato</td></tr>
+    <tr><td>7</td><td>Assinar Contrato</td><td>Jurídico</td><td>Colhe e anexa as assinaturas</td><td>Contratos Anexos</td></tr>
+    <tr><td>8</td><td>Contratos Anexos</td><td>Dep. de Contratos</td><td>Anexa documentos finais e finaliza</td><td>Fim</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="duvidas">8. Dúvidas frequentes</h2>
+<div class="card">
+  <h3>A tarefa aparece para o meu setor, mas não consigo mexer.</h3>
+  <p>Você ainda não é o responsável. Clique em <strong>Tornar-se responsável</strong> primeiro.</p>
+
+  <h3>Outra pessoa assumiu e está de férias.</h3>
+  <p>Você pode assumir a tarefa desde que esteja no grupo a qual ela pertence.</p>
+
+  <h3>Concluí a etapa por engano.</h3>
+  <p>Não dá para desfazer pelo Conecta. O caminho é usar a próxima etapa de retorno (reprovar na conferência, por exemplo) para trazer o processo de volta.</p>
+
+  <h3>Anexei o arquivo errado.</h3>
+  <p>Enquanto a etapa não estiver concluída, remova e anexe novamente. Depois de concluída, anexe a versão correta na etapa seguinte e registre a justificativa no andamento.</p>
+
+  <h3>O fluxo está parado e ninguém sabe onde.</h3>
+  <p>Abra a solicitação e olhe a aba <strong>Atualizações</strong>: a primeira linha sem data de conclusão é onde o processo está.</p>
+
+  <h3>Quantas vezes o contrato pode voltar para correção?</h3>
+  <p>Não há limite. O ciclo se repete até a aprovação.</p>
+</div>
+
+<footer>
+  Manual de uso interno — fluxo <strong>Solicitar Contrato</strong>, sistema Conecta (Betha) com processo desenhado no BPM Betha.
+  Revise os nomes de botões e menus conforme a versão instalada antes de distribuir.
+</footer>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
