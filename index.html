@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Central de Manuais</title>
+<meta name="description" content="Manuais de usuário dos sistemas utilizados pela equipe.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span></span>
+    <button class="theme-btn" type="button">Tema escuro</button>
+  </div>
+
+  <div class="hero">
+    <span class="tag">Central de Manuais</span>
+    <h1>Manuais de usuário</h1>
+    <p class="sub">Passo a passo dos sistemas usados pela equipe. Escolha o manual abaixo ou use a busca.</p>
+  </div>
+
+  <input class="search" type="search" placeholder="Buscar por sistema, processo ou palavra-chave…" aria-label="Buscar manuais">
+
+  <!-- ===================== CONECTA (BETHA) ===================== -->
+  <section data-sistema="conecta">
+    <div class="sys-title">
+      <h2>Conecta (Betha)</h2>
+      <span>Fluxos BPM e solicitações</span>
+    </div>
+    <div class="grid">
+
+      <a class="manual" href="manuais/conecta-solicitar-contrato.html"
+         data-tags="bpm contrato licitação jurídico assinatura fluxo tarefa pendente">
+        <h3>Solicitar Contrato</h3>
+        <p>Da abertura no setor de licitação até a assinatura e o anexo dos documentos finais.</p>
+        <div class="meta"><span class="badge">Publicado</span></div>
+      </a>
+
+      <!-- Para adicionar outro manual do Conecta, copie o bloco <a class="manual"> acima. -->
+
+    </div>
+  </section>
+
+  <!-- ===================== MODELO DE NOVO SISTEMA =====================
+  Copie o bloco <section> abaixo, troque o nome do sistema e os cards.
+
+  <section data-sistema="nome-do-sistema">
+    <div class="sys-title">
+      <h2>Nome do Sistema</h2>
+      <span>Descrição curta</span>
+    </div>
+    <div class="grid">
+      <a class="manual" href="manuais/arquivo-do-manual.html" data-tags="palavras chave">
+        <h3>Título do manual</h3>
+        <p>Uma linha explicando o que o manual cobre.</p>
+        <div class="meta"><span class="badge rascunho">Rascunho</span></div>
+      </a>
+    </div>
+  </section>
+  ==================================================================== -->
+
+  <p class="vazio" style="display:none">Nenhum manual encontrado para essa busca.</p>
+
+  <footer>
+    Documentação interna. Para incluir um novo manual, consulte o
+    <a href="https://github.com/">README do repositório</a>.
+  </footer>
+
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
